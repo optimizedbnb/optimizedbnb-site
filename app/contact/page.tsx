@@ -34,8 +34,8 @@ export default function ContactPage() {
                 <div className="space-y-4">
                   <div>
                     <p className="text-white/40 text-xs uppercase tracking-wider mb-1">Phone</p>
-                    <a href="tel:+18323537040" className="text-white hover:text-[#E8192C] transition-colors">
-                      (832) 353-7040
+                    <a href="https://wa.me/17138983055" className="text-white hover:text-[#E8192C] transition-colors">
+                      WhatsApp: (713) 898-3055
                     </a>
                   </div>
                   <div>

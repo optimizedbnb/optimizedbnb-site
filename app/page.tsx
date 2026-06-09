@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
+import PhotoStrip from "@/components/PhotoStrip";
 import TrustStrip from "@/components/TrustStrip";
 import StatsBar from "@/components/StatsBar";
 import SuiteGrid from "@/components/SuiteGrid";
@@ -29,6 +30,7 @@ export default function HomePage() {
       <Nav />
       <main>
         <Hero onSearch={handleSearch} />
+        <PhotoStrip />
         <TrustStrip />
         <StatsBar />
         <SuiteGrid properties={PROPERTIES} searchFilter={searchFilter} />

@@ -122,10 +122,10 @@ export default function ManagementPage() {
               Get a Free Consultation
             </Link>
             <a
-              href="tel:+18323537040"
+              href="https://wa.me/17138983055"
               className="inline-flex items-center gap-2 bg-[#202020] hover:bg-[#2a2a2a] text-white font-semibold px-10 py-4 rounded-xl transition-colors text-sm"
             >
-              Call (832) 353-7040
+              WhatsApp: (713) 898-3055
             </a>
           </div>
         </section>

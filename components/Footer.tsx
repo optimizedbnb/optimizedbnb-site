@@ -8,12 +8,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <Link href="/" className="flex items-center gap-3 mb-4">
-              <Image src="/logo.svg" alt="OptimizedBnB" width={40} height={40} className="object-contain" unoptimized />
-              <span className="font-display text-xl font-semibold">
-                <span style={{ color: "#E8192C" }}>OPTIMIZED</span>
-                <span className="text-white">BNB</span>
-              </span>
+            <Link href="/" className="inline-flex mb-4">
+              <Image src="/logo.png" alt="OptimizedBnB" width={140} height={48} className="object-contain" />
             </Link>
             <p className="text-white/45 text-sm leading-relaxed">
               Houston&apos;s premier luxury short-term rental company. 21 properties, 500+ five-star reviews.
@@ -44,8 +40,8 @@ export default function Footer() {
             <h3 className="text-white text-sm font-semibold mb-4 tracking-widest uppercase">Contact</h3>
             <ul className="space-y-2 text-sm text-white/45">
               <li>
-                <a href="tel:+18323537040" className="hover:text-white transition-colors">
-                  (832) 353-7040
+                <a href="https://wa.me/17138983055" className="hover:text-white transition-colors">
+                  WhatsApp: (713) 898-3055
                 </a>
               </li>
               <li>

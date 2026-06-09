@@ -100,7 +100,7 @@ export default function SuitePage({ params }: Props) {
                   </p>
                 )}
                 <a
-                  href="tel:+18323537040"
+                  href="https://wa.me/17138983055"
                   className="inline-flex items-center gap-2 bg-[#E8192C] hover:bg-[#c9101f] text-white font-semibold px-6 py-3 rounded-xl transition-colors duration-200 text-sm"
                 >
                   Reserve Now
@@ -132,10 +132,10 @@ export default function SuitePage({ params }: Props) {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <a
-                href="tel:+18323537040"
+                href="https://wa.me/17138983055"
                 className="inline-flex items-center gap-2 bg-[#E8192C] hover:bg-[#c9101f] text-white font-semibold px-8 py-3 rounded-xl transition-colors text-sm"
               >
-                📞 Call (832) 353-7040
+                💬 WhatsApp: (713) 898-3055
               </a>
               <a
                 href="mailto:optimizedbnb@gmail.com"
