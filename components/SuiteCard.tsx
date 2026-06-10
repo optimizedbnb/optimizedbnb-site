@@ -7,14 +7,17 @@ interface Props {
 }
 
 export default function SuiteCard({ property }: Props) {
+  const imageSrc =
+    property.images?.[0]?.url || property.photo.replace("aki_policy=small", "aki_policy=x_large");
+
   return (
     <Link
       href={`/suite/${property.slug || property.id}`}
-      className="group block bg-[#181818] rounded-xl overflow-hidden hover:ring-1 hover:ring-[#E8192C]/40 transition-all duration-300"
+      className="group block bg-white border border-[#E5E5E5] rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300"
     >
       <div className="relative h-52 overflow-hidden">
         <Image
-          src={property.photo}
+          src={imageSrc}
           alt={property.name}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -31,10 +34,10 @@ export default function SuiteCard({ property }: Props) {
       </div>
 
       <div className="p-4">
-        <h3 className="font-display text-lg font-semibold text-white mb-1 leading-tight">{property.name}</h3>
-        <p className="text-white/45 text-xs mb-3 truncate">{property.publicName}</p>
+        <h3 className="font-display text-lg font-semibold text-[#111111] mb-1 leading-tight">{property.name}</h3>
+        <p className="text-[#666666] text-xs mb-3 truncate">{property.publicName}</p>
 
-        <div className="flex items-center gap-3 text-white/60 text-xs mb-3">
+        <div className="flex items-center gap-3 text-[#666666] text-xs mb-3">
           {property.guests && <span>{property.guests} guests</span>}
           {property.bedrooms && <span>·</span>}
           {property.bedrooms && <span>{property.bedrooms} beds</span>}
@@ -45,15 +48,15 @@ export default function SuiteCard({ property }: Props) {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1">
             <span className="text-yellow-400 text-xs">★</span>
-            <span className="text-white/80 text-xs font-medium">{property.rating?.toFixed(2) ?? "5.00"}</span>
+            <span className="text-[#111111] text-xs font-medium">{property.rating?.toFixed(2) ?? "5.00"}</span>
             {property.reviewCount && (
-              <span className="text-white/40 text-xs">({property.reviewCount})</span>
+              <span className="text-[#666666] text-xs">({property.reviewCount})</span>
             )}
           </div>
           {property.pricePerNight && (
             <div className="text-right">
-              <span className="text-white font-semibold text-sm">${property.pricePerNight}</span>
-              <span className="text-white/45 text-xs">/night</span>
+              <span className="text-[#111111] font-semibold text-sm">${property.pricePerNight}</span>
+              <span className="text-[#666666] text-xs">/night</span>
             </div>
           )}
         </div>

@@ -30,24 +30,24 @@ export default function LeadGenForm() {
   }
 
   const inputCls =
-    "w-full bg-[#202020] border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-white/30 focus:outline-none focus:border-[#E8192C]/60 transition-colors";
+    "w-full bg-white border border-[#E5E5E5] rounded-lg px-4 py-3 text-[#111111] text-sm placeholder-[#999999] focus:outline-none focus:border-[#E8192C] transition-colors";
 
   return (
-    <section className="bg-[#111111] py-20 px-4 sm:px-6 lg:px-8">
+    <section className="bg-white py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto text-center mb-10">
-        <h2 className="font-display text-4xl font-light text-white mb-3">
+        <h2 className="font-display text-4xl font-light text-[#111111] mb-3">
           Looking for something <em className="not-italic text-[#E8192C]">specific?</em>
         </h2>
-        <p className="text-white/50 text-base">
+        <p className="text-[#666666] text-base">
           Tell us your dates, group size, and preferences. We&apos;ll curate the perfect suite.
         </p>
       </div>
 
       {status === "success" ? (
-        <div className="max-w-2xl mx-auto bg-[#181818] border border-[#E8192C]/20 rounded-2xl p-8 text-center">
+        <div className="max-w-2xl mx-auto bg-[#F7F7F7] border border-[#E8192C]/20 rounded-2xl p-8 text-center">
           <div className="text-4xl mb-3">✓</div>
-          <h3 className="text-white font-semibold text-lg mb-2">Inquiry received!</h3>
-          <p className="text-white/50 text-sm">We&apos;ll curate the perfect suite and be in touch shortly.</p>
+          <h3 className="text-[#111111] font-semibold text-lg mb-2">Inquiry received!</h3>
+          <p className="text-[#666666] text-sm">We&apos;ll curate the perfect suite and be in touch shortly.</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-4">
@@ -83,7 +83,7 @@ export default function LeadGenForm() {
               className={inputCls}
             >
               {[1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 15].map((n) => (
-                <option key={n} value={n} className="bg-[#202020]">
+                <option key={n} value={n} className="bg-white">
                   {n} guest{n !== 1 ? "s" : ""}
                 </option>
               ))}
@@ -91,22 +91,22 @@ export default function LeadGenForm() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="flex flex-col gap-1">
-              <label className="text-white/40 text-xs uppercase tracking-wider">Check-in</label>
+              <label className="text-[#666666] text-xs uppercase tracking-wider">Check-in</label>
               <input
                 type="date"
                 value={form.checkIn}
                 onChange={(e) => update("checkIn", e.target.value)}
-                className={inputCls + " [color-scheme:dark]"}
+                className={inputCls + " [color-scheme:light]"}
                 min={new Date().toISOString().split("T")[0]}
               />
             </div>
             <div className="flex flex-col gap-1">
-              <label className="text-white/40 text-xs uppercase tracking-wider">Check-out</label>
+              <label className="text-[#666666] text-xs uppercase tracking-wider">Check-out</label>
               <input
                 type="date"
                 value={form.checkOut}
                 onChange={(e) => update("checkOut", e.target.value)}
-                className={inputCls + " [color-scheme:dark]"}
+                className={inputCls + " [color-scheme:light]"}
                 min={form.checkIn || new Date().toISOString().split("T")[0]}
               />
             </div>

@@ -15,6 +15,7 @@ export interface Property {
   description?: string;
   amenities?: string[];
   photos?: string[];
+  images?: { url: string; caption?: string | null }[];
   available?: boolean;
 }
 

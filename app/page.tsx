@@ -41,12 +41,12 @@ export default function HomePage() {
         <ChefSection />
 
         {/* Reviews Section */}
-        <section className="bg-[#202020] py-20 overflow-hidden">
+        <section className="bg-[#F7F7F7] py-20 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
             <p className="text-[#E8192C] text-xs font-semibold tracking-[0.3em] uppercase mb-3">
               Guest Experiences
             </p>
-            <h2 className="font-display text-4xl font-light text-white">
+            <h2 className="font-display text-4xl font-light text-[#111111]">
               What Our Guests Are{" "}
               <em className="not-italic text-[#E8192C]">Saying</em>
             </h2>

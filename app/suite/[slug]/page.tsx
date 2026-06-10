@@ -1,10 +1,14 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import SuiteCard from "@/components/SuiteCard";
+import PhotoGallery from "@/components/suite/PhotoGallery";
+import AmenitiesGrid from "@/components/suite/AmenitiesGrid";
+import BookingSidebar from "@/components/suite/BookingSidebar";
+import SuiteReviews from "@/components/suite/SuiteReviews";
 import { PROPERTIES } from "@/data/properties";
+import { getPropertyImages } from "@/lib/hospitable";
 
 interface Props {
   params: { slug: string };
@@ -23,24 +27,7 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-const AMENITY_ICONS: Record<string, string> = {
-  "Hot Tub": "🛁",
-  "Pool": "🏊",
-  "Backyard": "🌿",
-  "BBQ Grill": "🔥",
-  "Game Room": "🎮",
-  "Rooftop": "🏙️",
-  "Mini Golf": "⛳",
-  "Outdoor Dining": "🍽️",
-  "King Bed": "🛏️",
-  "Pool Table": "🎱",
-  "Fire Pit": "🔥",
-  "Patio": "☀️",
-  "City Views": "🌆",
-  "Board Games": "🎲",
-};
-
-export default function SuitePage({ params }: Props) {
+export default async function SuitePage({ params }: Props) {
   const property = PROPERTIES.find((p) => p.slug === params.slug || p.id === params.slug);
   if (!property) notFound();
 
@@ -48,123 +35,98 @@ export default function SuitePage({ params }: Props) {
     (p) => p.id !== property.id && p.neighborhood === property.neighborhood
   ).slice(0, 3);
 
+  let photos: { url: string }[] = [];
+  try {
+    const imagesData = await getPropertyImages(property.id);
+    const images = Array.isArray(imagesData?.data) ? imagesData.data : [];
+    photos = images.filter((img: { url?: string }) => img?.url).map((img: { url: string }) => ({ url: img.url }));
+  } catch {
+    photos = [];
+  }
+  if (photos.length === 0) {
+    if (property.photos && property.photos.length > 0) {
+      photos = property.photos.map((url) => ({ url }));
+    } else {
+      photos = [{ url: property.photo.replace("aki_policy=small", "aki_policy=x_large") }];
+    }
+  }
+
+  const description =
+    property.description ??
+    `${property.publicName} is a beautifully appointed retreat in ${property.neighborhood}, Houston, comfortably hosting up to ${
+      property.guests ?? 4
+    } guests across ${property.bedrooms ?? 2} bedrooms and ${
+      property.bathrooms ?? 1
+    } bathrooms. Thoughtfully designed and meticulously maintained, this suite offers the perfect blend of comfort, style, and convenience for your stay in Houston.`;
+
   return (
     <>
       <Nav />
-      <main className="pt-[calc(4rem+var(--banner-h))] min-h-screen">
-        {/* Hero Photo */}
-        <div className="relative h-[50vh] lg:h-[60vh] bg-[#181818]">
-          <Image
-            src={property.photo}
-            alt={property.name}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent" />
+      <main className="pt-[calc(4rem+var(--banner-h))] min-h-screen bg-white">
+        <PhotoGallery photos={photos} propertyName={property.name} />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 lg:grid-cols-3 gap-10">
+          {/* Listing Info */}
+          <div className="lg:col-span-2">
+            <p className="text-[#E8192C] text-xs font-semibold tracking-[0.3em] uppercase mb-2">
+              {property.neighborhood} · Houston, TX
+            </p>
+            <h1 className="font-display text-3xl sm:text-4xl font-semibold text-[#111111] mb-2">
+              {property.name}
+            </h1>
+            <div className="flex flex-wrap items-center gap-4 text-[#666666] text-sm mb-4">
+              {property.guests && <span>{property.guests} guests</span>}
+              {property.bedrooms && <span>·</span>}
+              {property.bedrooms && <span>{property.bedrooms} bedrooms</span>}
+              {property.bathrooms && <span>·</span>}
+              {property.bathrooms && <span>{property.bathrooms} bathrooms</span>}
+            </div>
+            {property.rating && (
+              <div className="flex items-center gap-1 text-sm mb-6">
+                <span className="text-yellow-400">★</span>
+                <span className="text-[#111111] font-medium">{property.rating.toFixed(2)}</span>
+                {property.reviewCount && (
+                  <span className="text-[#666666]">({property.reviewCount} reviews)</span>
+                )}
+              </div>
+            )}
+
+            <p className="text-[#666666] text-sm leading-relaxed whitespace-pre-line mb-8">{description}</p>
+
+            <div className="border-t border-[#E5E5E5] pt-8">
+              <AmenitiesGrid amenities={property.amenities} />
+            </div>
+          </div>
+
+          {/* Booking Sidebar */}
+          <div className="lg:col-span-1">
+            <BookingSidebar propertyName={property.name} pricePerNight={property.pricePerNight} />
+          </div>
         </div>
 
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-10">
-          {/* Suite Header */}
-          <div className="bg-[#181818] rounded-2xl p-6 sm:p-8 border border-white/5 mb-8">
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-              <div>
-                <p className="text-[#E8192C] text-xs font-semibold tracking-[0.3em] uppercase mb-2">
-                  {property.neighborhood} · Houston, TX
-                </p>
-                <h1 className="font-display text-3xl sm:text-4xl font-semibold text-white mb-2">
-                  {property.name}
-                </h1>
-                <p className="text-white/50 text-sm mb-4">{property.publicName}</p>
-                <div className="flex flex-wrap items-center gap-4 text-white/60 text-sm">
-                  {property.guests && <span>👥 {property.guests} guests</span>}
-                  {property.bedrooms && <span>🛏️ {property.bedrooms} bedrooms</span>}
-                  {property.bathrooms && <span>🚿 {property.bathrooms} bathrooms</span>}
-                  {property.rating && (
-                    <span className="flex items-center gap-1">
-                      <span className="text-yellow-400">★</span>
-                      {property.rating.toFixed(2)}
-                      {property.reviewCount && (
-                        <span className="text-white/40">({property.reviewCount} reviews)</span>
-                      )}
-                    </span>
-                  )}
-                </div>
-              </div>
-              <div className="sm:text-right shrink-0">
-                {property.pricePerNight && (
-                  <p className="text-white text-2xl font-bold mb-1">
-                    ${property.pricePerNight}
-                    <span className="text-white/40 text-sm font-normal">/night</span>
-                  </p>
-                )}
-                <a
-                  href="https://wa.me/17138983055"
-                  className="inline-flex items-center gap-2 bg-[#E8192C] hover:bg-[#c9101f] text-white font-semibold px-6 py-3 rounded-xl transition-colors duration-200 text-sm"
-                >
-                  Reserve Now
-                </a>
-              </div>
+        {/* Reviews */}
+        <div className="border-t border-[#E5E5E5]">
+          <SuiteReviews propertyId={property.id} rating={property.rating} reviewCount={property.reviewCount} />
+        </div>
+
+        {/* Similar Properties */}
+        {related.length > 0 && (
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-[#E5E5E5]">
+            <h2 className="font-display text-2xl font-semibold text-[#111111] mb-6">
+              More in {property.neighborhood}
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+              {related.map((p) => (
+                <SuiteCard key={p.id} property={p} />
+              ))}
             </div>
           </div>
+        )}
 
-          {/* Amenities */}
-          {property.amenities && property.amenities.length > 0 && (
-            <div className="bg-[#181818] rounded-2xl p-6 sm:p-8 border border-white/5 mb-8">
-              <h2 className="text-white font-semibold text-lg mb-4">Amenities</h2>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-                {property.amenities.map((a) => (
-                  <div key={a} className="flex items-center gap-2 text-white/70 text-sm bg-[#202020] rounded-lg px-3 py-2">
-                    <span>{AMENITY_ICONS[a] ?? "✓"}</span>
-                    <span>{a}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Book CTA */}
-          <div className="bg-[#E8192C]/10 border border-[#E8192C]/20 rounded-2xl p-6 sm:p-8 mb-8 text-center">
-            <h2 className="font-display text-2xl font-semibold text-white mb-2">Ready to Book?</h2>
-            <p className="text-white/50 text-sm mb-6">
-              Contact us to check availability and reserve this suite.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <a
-                href="https://wa.me/17138983055"
-                className="inline-flex items-center gap-2 bg-[#E8192C] hover:bg-[#c9101f] text-white font-semibold px-8 py-3 rounded-xl transition-colors text-sm"
-              >
-                💬 WhatsApp: (713) 898-3055
-              </a>
-              <a
-                href="mailto:optimizedbnb@gmail.com"
-                className="inline-flex items-center gap-2 bg-[#202020] hover:bg-[#2a2a2a] text-white font-semibold px-8 py-3 rounded-xl transition-colors text-sm"
-              >
-                ✉️ Email Us
-              </a>
-            </div>
-          </div>
-
-          {/* Related Suites */}
-          {related.length > 0 && (
-            <div className="mb-16">
-              <h2 className="font-display text-2xl font-semibold text-white mb-6">
-                More in {property.neighborhood}
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-                {related.map((p) => (
-                  <SuiteCard key={p.id} property={p} />
-                ))}
-              </div>
-            </div>
-          )}
-
-          <div className="mb-8">
-            <Link href="/suites" className="text-[#E8192C] text-sm hover:underline flex items-center gap-2">
-              ← All Suites
-            </Link>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+          <Link href="/suites" className="text-[#E8192C] text-sm hover:underline flex items-center gap-2">
+            ← All Suites
+          </Link>
         </div>
       </main>
       <Footer />

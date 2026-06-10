@@ -24,3 +24,7 @@ export async function getPropertyCalendar(propertyId: string, startDate: string,
 export async function getReviews() {
   return hospitableGet("/reviews?per_page=100");
 }
+
+export async function getPropertyImages(propertyId: string) {
+  return hospitableGet(`/properties/${propertyId}/images`);
+}

@@ -2,17 +2,17 @@ import Link from "next/link";
 
 export default function ManagementTeaser() {
   return (
-    <section className="bg-[#202020] py-20 px-4 sm:px-6 lg:px-8">
+    <section className="bg-[#F2F2F2] py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="max-w-3xl">
           <p className="text-[#E8192C] text-xs font-semibold tracking-[0.3em] uppercase mb-4">
             For Property Owners
           </p>
-          <h2 className="font-display text-4xl lg:text-5xl font-light text-white leading-tight mb-6">
+          <h2 className="font-display text-4xl lg:text-5xl font-light text-[#111111] leading-tight mb-6">
             Let Us Manage Your{" "}
             <em className="not-italic text-[#E8192C]">Investment</em>
           </h2>
-          <p className="text-white/60 text-base leading-relaxed mb-8 max-w-2xl">
+          <p className="text-[#666666] text-base leading-relaxed mb-8 max-w-2xl">
             OptimizedBnB offers full-service short-term rental management across Houston. We handle everything
             from listing optimization and dynamic pricing to guest communication, cleaning coordination, and
             maintenance — so you earn more without the hassle.
@@ -24,9 +24,9 @@ export default function ManagementTeaser() {
               { metric: "500+", label: "5-Star Reviews" },
               { metric: "24/7", label: "Guest Support" },
             ].map((s) => (
-              <div key={s.label} className="bg-[#181818] rounded-xl p-4 border border-white/5">
+              <div key={s.label} className="bg-white rounded-xl p-4 border border-[#E5E5E5]">
                 <p className="font-display text-2xl font-bold text-[#E8192C] mb-1">{s.metric}</p>
-                <p className="text-white/50 text-xs">{s.label}</p>
+                <p className="text-[#666666] text-xs">{s.label}</p>
               </div>
             ))}
           </div>

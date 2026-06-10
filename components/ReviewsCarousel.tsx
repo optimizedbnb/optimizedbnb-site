@@ -18,14 +18,14 @@ function StarRow({ count }: { count: number }) {
 
 function ReviewCard({ review }: { review: Review }) {
   return (
-    <div className="w-80 shrink-0 bg-[#181818] rounded-xl p-6 mx-3 border border-white/5">
+    <div className="w-80 shrink-0 bg-white rounded-xl p-6 mx-3 border border-[#E5E5E5]">
       <StarRow count={review.rating} />
-      <p className="text-white/70 text-sm leading-relaxed mt-3 mb-4 line-clamp-5">
+      <p className="text-[#666666] text-sm leading-relaxed mt-3 mb-4 line-clamp-5">
         &ldquo;{review.text}&rdquo;
       </p>
       <div>
-        <p className="text-white text-sm font-semibold">{review.guest}</p>
-        <p className="text-white/40 text-xs">{review.tag}</p>
+        <p className="text-[#111111] text-sm font-semibold">{review.guest}</p>
+        <p className="text-[#666666] text-xs">{review.tag}</p>
       </div>
     </div>
   );

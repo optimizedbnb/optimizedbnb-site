@@ -63,7 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-[#111111] text-white font-body antialiased pb-14 md:pb-0">
+      <body className="bg-white text-[#111111] font-body antialiased pb-14 md:pb-0">
         <PromoBanner />
         {children}
         <WhatsAppButton />

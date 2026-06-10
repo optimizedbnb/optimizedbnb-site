@@ -10,11 +10,13 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          bg: "#111111",
-          card: "#181818",
-          section: "#202020",
+          bg: "#FFFFFF",
+          card: "#F7F7F7",
+          section: "#F2F2F2",
           red: "#E8192C",
-          muted: "rgba(255,255,255,0.45)",
+          border: "#E5E5E5",
+          text: "#111111",
+          muted: "#666666",
         },
       },
       fontFamily: {

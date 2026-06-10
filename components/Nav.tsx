@@ -9,7 +9,7 @@ export default function Nav() {
 
   return (
     <nav
-      className="fixed left-0 right-0 z-50 bg-[#111111]/95 backdrop-blur-sm border-b border-white/5"
+      className="fixed left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#E5E5E5]"
       style={{ top: "var(--banner-h)" }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -30,7 +30,7 @@ export default function Nav() {
             <Link
               key={l.href}
               href={l.href}
-              className="text-sm text-white/70 hover:text-white transition-colors duration-200 tracking-wide"
+              className="text-sm text-[#666666] hover:text-[#111111] transition-colors duration-200 tracking-wide"
             >
               {l.label}
             </Link>
@@ -46,7 +46,7 @@ export default function Nav() {
             Book Now
           </Link>
           <button
-            className="md:hidden p-2 text-white/70 hover:text-white"
+            className="md:hidden p-2 text-[#666666] hover:text-[#111111]"
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
           >
@@ -65,7 +65,7 @@ export default function Nav() {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="md:hidden bg-[#181818] border-t border-white/5 px-4 py-4 space-y-3">
+        <div className="md:hidden bg-white border-t border-[#E5E5E5] px-4 py-4 space-y-3">
           {[
             { label: "Suites", href: "/suites" },
             { label: "About", href: "/about" },
@@ -76,7 +76,7 @@ export default function Nav() {
             <Link
               key={l.href}
               href={l.href}
-              className="block py-2 text-white/70 hover:text-white text-sm"
+              className="block py-2 text-[#666666] hover:text-[#111111] text-sm"
               onClick={() => setOpen(false)}
             >
               {l.label}

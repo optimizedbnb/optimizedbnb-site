@@ -3,10 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --brand-bg: #111111;
-  --brand-card: #181818;
-  --brand-section: #202020;
+  --brand-bg: #FFFFFF;
+  --brand-card: #F7F7F7;
+  --brand-section: #F2F2F2;
   --brand-red: #E8192C;
+  --brand-border: #E5E5E5;
+  --brand-text: #111111;
+  --brand-muted: #666666;
   --banner-h: 2.5rem;
 }
 
@@ -21,7 +24,7 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   background: var(--brand-bg);
-  color: #ffffff;
+  color: var(--brand-text);
 }
 
 .carousel-track {

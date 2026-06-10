@@ -45,12 +45,12 @@ function SuitesContent() {
     <>
       <Nav />
       <main className="pt-[calc(4rem+var(--banner-h))] min-h-screen">
-        <div className="bg-[#181818] border-b border-white/5 py-10 px-4 sm:px-6 lg:px-8">
+        <div className="bg-[#F7F7F7] border-b border-[#E5E5E5] py-10 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <p className="text-[#E8192C] text-xs font-semibold tracking-[0.3em] uppercase mb-2">
               Houston, Texas
             </p>
-            <h1 className="font-display text-4xl lg:text-5xl font-light text-white">
+            <h1 className="font-display text-4xl lg:text-5xl font-light text-[#111111]">
               All <em className="not-italic text-[#E8192C]">Suites</em>
             </h1>
           </div>
@@ -62,7 +62,7 @@ function SuitesContent() {
             <aside className="w-full lg:w-60 shrink-0 space-y-8">
               {/* Neighborhood */}
               <div>
-                <h3 className="text-white text-xs font-semibold tracking-widest uppercase mb-3">Neighborhood</h3>
+                <h3 className="text-[#111111] text-xs font-semibold tracking-widest uppercase mb-3">Neighborhood</h3>
                 <div className="space-y-1">
                   {NEIGHBORHOODS.map((n) => (
                     <button
@@ -71,7 +71,7 @@ function SuitesContent() {
                       className={`block w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
                         neighborhood === n
                           ? "bg-[#E8192C]/10 text-[#E8192C] font-medium"
-                          : "text-white/60 hover:text-white hover:bg-white/5"
+                          : "text-[#666666] hover:text-[#111111] hover:bg-[#F2F2F2]"
                       }`}
                     >
                       {n}
@@ -82,14 +82,14 @@ function SuitesContent() {
 
               {/* Guests */}
               <div>
-                <h3 className="text-white text-xs font-semibold tracking-widest uppercase mb-3">Min. Guests</h3>
+                <h3 className="text-[#111111] text-xs font-semibold tracking-widest uppercase mb-3">Min. Guests</h3>
                 <select
                   value={minGuests}
                   onChange={(e) => setMinGuests(Number(e.target.value))}
-                  className="w-full bg-[#202020] border border-white/10 rounded-lg px-3 py-2 text-white text-sm outline-none focus:border-[#E8192C]/60"
+                  className="w-full bg-white border border-[#E5E5E5] rounded-lg px-3 py-2 text-[#111111] text-sm outline-none focus:border-[#E8192C]"
                 >
                   {[1, 2, 4, 6, 8, 10, 12, 15].map((n) => (
-                    <option key={n} value={n} className="bg-[#202020]">
+                    <option key={n} value={n} className="bg-white">
                       {n}+ guests
                     </option>
                   ))}
@@ -98,7 +98,7 @@ function SuitesContent() {
 
               {/* Amenities */}
               <div>
-                <h3 className="text-white text-xs font-semibold tracking-widest uppercase mb-3">Amenities</h3>
+                <h3 className="text-[#111111] text-xs font-semibold tracking-widest uppercase mb-3">Amenities</h3>
                 <div className="space-y-2">
                   {AMENITIES.map((a) => (
                     <label key={a} className="flex items-center gap-2 cursor-pointer">
@@ -108,7 +108,7 @@ function SuitesContent() {
                         onChange={() => toggleAmenity(a)}
                         className="accent-[#E8192C]"
                       />
-                      <span className="text-white/60 text-sm">{a}</span>
+                      <span className="text-[#666666] text-sm">{a}</span>
                     </label>
                   ))}
                 </div>
@@ -128,19 +128,19 @@ function SuitesContent() {
             {/* Grid */}
             <div className="flex-1">
               <div className="flex items-center justify-between mb-6">
-                <p className="text-white/50 text-sm">{filtered.length} suites</p>
+                <p className="text-[#666666] text-sm">{filtered.length} suites</p>
                 <select
                   value={sort}
                   onChange={(e) => setSort(e.target.value)}
-                  className="bg-[#202020] border border-white/10 rounded-lg px-3 py-2 text-white text-sm outline-none focus:border-[#E8192C]/60"
+                  className="bg-white border border-[#E5E5E5] rounded-lg px-3 py-2 text-[#111111] text-sm outline-none focus:border-[#E8192C]"
                 >
-                  <option value="top-rated" className="bg-[#202020]">Top Rated</option>
-                  <option value="price-asc" className="bg-[#202020]">Price: Low to High</option>
-                  <option value="price-desc" className="bg-[#202020]">Price: High to Low</option>
+                  <option value="top-rated" className="bg-white">Top Rated</option>
+                  <option value="price-asc" className="bg-white">Price: Low to High</option>
+                  <option value="price-desc" className="bg-white">Price: High to Low</option>
                 </select>
               </div>
               {filtered.length === 0 ? (
-                <div className="text-center py-16 text-white/45">
+                <div className="text-center py-16 text-[#666666]">
                   <p>No suites match your filters.</p>
                 </div>
               ) : (
@@ -161,7 +161,7 @@ function SuitesContent() {
 
 export default function SuitesPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-[#111111]" />}>
+    <Suspense fallback={<div className="min-h-screen bg-white" />}>
       <SuitesContent />
     </Suspense>
   );
