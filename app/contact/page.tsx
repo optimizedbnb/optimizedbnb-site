@@ -12,7 +12,7 @@ export default function ContactPage() {
   return (
     <>
       <Nav />
-      <main className="pt-16 min-h-screen">
+      <main className="pt-[calc(4rem+var(--banner-h))] min-h-screen">
         <section className="bg-[#181818] border-b border-white/5 py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-[#E8192C] text-xs font-semibold tracking-[0.3em] uppercase mb-3">Get In Touch</p>

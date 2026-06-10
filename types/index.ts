@@ -21,7 +21,7 @@ export interface Property {
 export interface Review {
   guest: string;
   rating: number;
-  property: string;
+  tag: string;
   text: string;
 }
 

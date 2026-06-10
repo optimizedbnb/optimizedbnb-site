@@ -25,7 +25,7 @@ function ReviewCard({ review }: { review: Review }) {
       </p>
       <div>
         <p className="text-white text-sm font-semibold">{review.guest}</p>
-        <p className="text-white/40 text-xs">{review.property}</p>
+        <p className="text-white/40 text-xs">{review.tag}</p>
       </div>
     </div>
   );

@@ -8,7 +8,10 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#111111]/95 backdrop-blur-sm border-b border-white/5">
+    <nav
+      className="fixed left-0 right-0 z-50 bg-[#111111]/95 backdrop-blur-sm border-b border-white/5"
+      style={{ top: "var(--banner-h)" }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo + Wordmark */}
         <Link href="/" className="flex items-center shrink-0">

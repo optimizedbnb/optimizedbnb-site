@@ -44,7 +44,7 @@ function SuitesContent() {
   return (
     <>
       <Nav />
-      <main className="pt-16 min-h-screen">
+      <main className="pt-[calc(4rem+var(--banner-h))] min-h-screen">
         <div className="bg-[#181818] border-b border-white/5 py-10 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <p className="text-[#E8192C] text-xs font-semibold tracking-[0.3em] uppercase mb-2">

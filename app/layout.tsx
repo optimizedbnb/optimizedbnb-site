@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import PromoBanner from "@/components/PromoBanner";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -31,10 +32,39 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  name: "OptimizedBnB",
+  description:
+    "Luxury short-term rentals in Houston, Texas. 5-star properties near Med Center, Downtown, NRG Stadium.",
+  url: "https://optimizedbnb.com",
+  telephone: "+17138983055",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Houston",
+    addressRegion: "TX",
+    addressCountry: "US",
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "500",
+    bestRating: "5",
+  },
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="bg-[#111111] text-white font-body antialiased pb-14 md:pb-0">
+        <PromoBanner />
         {children}
         <WhatsAppButton />
       </body>

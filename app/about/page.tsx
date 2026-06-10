@@ -12,7 +12,7 @@ export default function AboutPage() {
   return (
     <>
       <Nav />
-      <main className="pt-16 min-h-screen">
+      <main className="pt-[calc(4rem+var(--banner-h))] min-h-screen">
         {/* Header */}
         <section className="bg-[#181818] border-b border-white/5 py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">

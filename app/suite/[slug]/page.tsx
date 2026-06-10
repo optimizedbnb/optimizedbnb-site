@@ -51,7 +51,7 @@ export default function SuitePage({ params }: Props) {
   return (
     <>
       <Nav />
-      <main className="pt-16 min-h-screen">
+      <main className="pt-[calc(4rem+var(--banner-h))] min-h-screen">
         {/* Hero Photo */}
         <div className="relative h-[50vh] lg:h-[60vh] bg-[#181818]">
           <Image
