@@ -10,6 +10,7 @@ import StatsBar from "@/components/StatsBar";
 import SuiteGrid from "@/components/SuiteGrid";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
 import LeadGenForm from "@/components/LeadGenForm";
+import NewsletterSection from "@/components/NewsletterSection";
 import ChefSection from "@/components/ChefSection";
 import ManagementTeaser from "@/components/ManagementTeaser";
 import Footer from "@/components/Footer";
@@ -54,6 +55,7 @@ export default function HomePage() {
         </section>
 
         <LeadGenForm />
+        <NewsletterSection />
       </main>
       <Footer />
     </>
