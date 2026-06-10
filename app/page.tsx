@@ -5,6 +5,7 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import PhotoStrip from "@/components/PhotoStrip";
 import TrustStrip from "@/components/TrustStrip";
+import PerfectForSection from "@/components/PerfectForSection";
 import StatsBar from "@/components/StatsBar";
 import SuiteGrid from "@/components/SuiteGrid";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
@@ -32,6 +33,7 @@ export default function HomePage() {
         <Hero onSearch={handleSearch} />
         <PhotoStrip />
         <TrustStrip />
+        <PerfectForSection />
         <StatsBar />
         <SuiteGrid properties={PROPERTIES} searchFilter={searchFilter} />
         <ManagementTeaser />
